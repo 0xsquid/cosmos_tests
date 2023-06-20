@@ -8,11 +8,13 @@
     "dev-mainnet": "ts-node index-mainnet.ts",
     "runner:testnet": "ts-node tests/runner.ts testnet",
     "runner:mainnet": "ts-node tests/runner.ts mainnet",
+    "runner:all:testnet": "ts-node tests/runnerAll.ts testnet",
+    "runner:all:mainnet": "ts-node tests/runnerAll.ts mainnet",
     "show:testnet": "ts-node tests/printCases.ts testnet",
     "show:mainnet": "ts-node tests/printCases.ts mainnet"
   },
   "dependencies": {
-    "@0xsquid/sdk": "1.4.4-beta.2",
+    "@0xsquid/sdk": "1.4.5-beta.0",
     "@cosmjs/stargate": "^0.30.1",
     "@types/node": "^18.11.10",
     "@types/typescript": "^2.0.0",

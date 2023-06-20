@@ -1,3 +1,4 @@
+import { appendFileSync } from "fs";
 import { CosmosChain, GetRoute, Squid } from "@0xsquid/sdk";
 import { SigningStargateClient, DeliverTxResponse } from "@cosmjs/stargate";
 import {
@@ -9,13 +10,20 @@ import { sleep } from "../utils";
 import { loadAsync } from "node-yaml-config";
 import { RunnerCase, cases, intoBaseRequest } from "./cases";
 
-async function getConfig(network: string): Promise<any> {
+const LOG_FILE = "actions.log";
+
+function log(text: string) {
+  appendFileSync(LOG_FILE, `${text}\n`, "utf8");
+  console.log(text);
+}
+
+export async function getConfig(network: string): Promise<any> {
   const config = await loadAsync("./config.yml", network);
   if (typeof config === undefined) {
     throw new Error("create config.yml file in the root of the repo");
   }
 
-  console.log(
+  log(
     `Current config for network type ${network}:\n${JSON.stringify(
       config,
       null,
@@ -25,8 +33,8 @@ async function getConfig(network: string): Promise<any> {
   return config;
 }
 
-async function runCase(config: any, runnerCase: RunnerCase) {
-  console.log(`Running case: ${runnerCase.caseName}`);
+export async function runCase(config: any, runnerCase: RunnerCase) {
+  log(`Running case: ${runnerCase.caseName}`);
 
   const squid = new Squid({
     baseUrl: config.api_url,
@@ -72,7 +80,7 @@ async function runCase(config: any, runnerCase: RunnerCase) {
       );
 
       signerAddress = (await offlineSigner.getAccounts())[0].address;
-      console.log(
+      log(
         `Cosmos account ${signerAddress} balances:\n ${JSON.stringify(
           await signer.getAllBalances(signerAddress),
           null,
@@ -89,10 +97,10 @@ async function runCase(config: any, runnerCase: RunnerCase) {
     }
   }
 
-  console.log("Getting route...");
+  log("Getting route...");
   const { route } = await squid.getRoute(params as GetRoute);
 
-  console.log("Route received. Broadcasting transaction...");
+  log("Route received. Broadcasting transaction...");
   const tx = await squid.executeRoute({
     signer,
     signerAddress,
@@ -117,9 +125,9 @@ async function runCase(config: any, runnerCase: RunnerCase) {
     }
   }
 
-  console.log(`TX Hash: ${txHash}`);
+  log(`TX Hash: ${txHash}`);
 
-  console.log("Waiting for tx to be indexed...");
+  log("Waiting for tx to be indexed...");
   await sleep(5);
 
   let statusResult = false;
@@ -128,7 +136,8 @@ async function runCase(config: any, runnerCase: RunnerCase) {
     try {
       const status = (await squid.getStatus({
         transactionId: txHash,
-        // fromChainId: runnerCase.fromChainId, // TODO: errors due to not having this field on sdk level
+        fromChainId: runnerCase.fromChainId,
+        toChainId: runnerCase.toChainId,
       })) as any;
 
       if (!!status.routeStatus) {
@@ -137,10 +146,16 @@ async function runCase(config: any, runnerCase: RunnerCase) {
             (s) => s.chainId === runnerCase.toChainId && s.status === "success"
           )
         ) {
-          console.log(`Route status found:\n${status.routeStatus}`);
+          log(
+            `Route status found:\n${JSON.stringify(
+              status.routeStatus,
+              null,
+              2
+            )}`
+          );
 
           statusResult = true;
-          console.log("########### tx success ############");
+          log("########### tx success ############");
           break;
         }
       }
@@ -149,6 +164,10 @@ async function runCase(config: any, runnerCase: RunnerCase) {
       await sleep(3);
     }
   }
+
+  log(
+    "------------------------------------------------------------------------------"
+  );
 }
 
 (async () => {
