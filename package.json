@@ -5,7 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node index.ts",
-    "dev-mainnet": "ts-node index-mainnet.ts"
+    "dev-mainnet": "ts-node index-mainnet.ts",
+    "runner:testnet": "ts-node tests/runner.ts testnet",
+    "runner:mainnet": "ts-node tests/runner.ts mainnet",
+    "show:testnet": "ts-node tests/printCases.ts testnet",
+    "show:mainnet": "ts-node tests/printCases.ts mainnet"
   },
   "dependencies": {
     "@0xsquid/sdk": "1.4.4-beta.2",
