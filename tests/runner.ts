@@ -25,7 +25,7 @@ export async function getConfig(network: string): Promise<any> {
 
   log(
     `Current config for network type ${network}:\n${JSON.stringify(
-      config,
+      config.api_url,
       null,
       2
     )}`
@@ -125,10 +125,12 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
     }
   }
 
+  //const txHash =
+  //  "0BC37ED9336FE32C1247B9D04847431A210EA31EB9CF7BBBDA04C1B603F3294F";
   log(`TX Hash: ${txHash}`);
 
   log("Waiting for tx to be indexed...");
-  await sleep(5);
+  //await sleep(5);
 
   let statusResult = false;
   while (!statusResult) {
@@ -139,7 +141,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
         fromChainId: runnerCase.fromChainId,
         toChainId: runnerCase.toChainId,
       })) as any;
-
+      //console.log(status);
       if (!!status.routeStatus) {
         if (
           !!status.routeStatus.find(
@@ -160,6 +162,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
         }
       }
     } catch (error) {
+      //console.log(error);
       console.log("Tx not found yet..");
       await sleep(3);
     }
