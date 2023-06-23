@@ -100,11 +100,21 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
   log("Getting route...");
   const { route } = await squid.getRoute(params as GetRoute);
 
+  //override gas for fantom
+  let overrides;
+  if ((params as GetRoute).fromChain === 250) {
+    overrides = {
+      maxPriorityFeePerGas: ethers.utils.parseUnits("200", "gwei"),
+      maxFeePerGas: ethers.utils.parseUnits("200", "gwei"),
+    };
+  }
+
   log("Route received. Broadcasting transaction...");
   const tx = await squid.executeRoute({
     signer,
     signerAddress,
     route,
+    overrides: overrides,
   });
 
   let txHash: string;
@@ -126,7 +136,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
   }
 
   //const txHash =
-  //  "ED61A134E791EC69AAA48DEC0A630C3F6BFB73C748DF19FC32F413E8319B569C";
+  //  "3FF5ABD0596A0A91DB39627FC89FB79C49E0736963BC0637A46041C9C432DF0D";
   log(`TX Hash: ${txHash}`);
 
   log("Waiting for tx to be indexed...");

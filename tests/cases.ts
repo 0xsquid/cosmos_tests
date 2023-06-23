@@ -134,10 +134,32 @@ export const cases: Cases = {
       toToken: "ausdc",
       toAddress: "axelar1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64d2ak9f",
     },
+    {
+      caseId: 305,
+      caseName: "ausdc:osmosis-ausdc:axelar",
+      caseType: "cosmos",
+      fromAmount: "111111",
+      fromChainId: "osmo-test-5",
+      fromToken: "ausdc",
+      toChainId: "axelar-testnet-lisbon-3",
+      toToken: "ausdc",
+      toAddress: "axelar1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64d2ak9f",
+    },
     // add new cases here
   ],
   ["mainnet"]: [
-    // add new cases here
+    // evm-cosmos
+    {
+      caseId: 101,
+      caseName: "ftm:fantom-osmo:osmosis",
+      caseType: "evm",
+      fromAmount: ethers.utils.parseUnits(".05", "18").toString(),
+      fromChainId: 250,
+      fromToken: "ftm",
+      toChainId: "osmosis-1",
+      toToken: "osmo",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+    },
   ],
 };
 
