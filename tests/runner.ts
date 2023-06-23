@@ -126,7 +126,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
   }
 
   //const txHash =
-  //  "0BC37ED9336FE32C1247B9D04847431A210EA31EB9CF7BBBDA04C1B603F3294F";
+  //  "ED61A134E791EC69AAA48DEC0A630C3F6BFB73C748DF19FC32F413E8319B569C";
   log(`TX Hash: ${txHash}`);
 
   log("Waiting for tx to be indexed...");
@@ -134,14 +134,16 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
 
   let statusResult = false;
   while (!statusResult) {
-    console.log(`Getting tx status for: ${txHash}`);
+    console.log(
+      `Getting tx status for: ${txHash} - caseId: ${runnerCase.caseId} - caseName: ${runnerCase.caseName}`
+    );
     try {
       const status = (await squid.getStatus({
         transactionId: txHash,
         fromChainId: runnerCase.fromChainId,
         toChainId: runnerCase.toChainId,
       })) as any;
-      //console.log(status);
+      console.log(status);
       if (!!status.routeStatus) {
         if (
           !!status.routeStatus.find(
@@ -162,7 +164,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
         }
       }
     } catch (error) {
-      //console.log(error);
+      console.log(error);
       console.log("Tx not found yet..");
       await sleep(3);
     }
