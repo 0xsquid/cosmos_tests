@@ -22,7 +22,7 @@ export const cases: Cases = {
   ["testnet"]: [
     // evm-cosmos
     {
-      caseId: 1,
+      caseId: 101,
       caseName: "avax:avax-nusdc:dydx",
       caseType: "evm",
       fromAmount: ethers.utils.parseUnits(".05", "18").toString(),
@@ -33,7 +33,7 @@ export const cases: Cases = {
       toAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
     },
     {
-      caseId: 2,
+      caseId: 102,
       caseName: "avax:avax-nusdc:osmosis",
       caseType: "evm",
       fromAmount: ethers.utils.parseUnits(".05", "18").toString(),
@@ -44,10 +44,10 @@ export const cases: Cases = {
       toAddress: "osmo1eaztm3pqrkw2xgt0lxppahtx5v5pndmjg6yfrh",
     },
     {
-      caseId: 3,
+      caseId: 103,
       caseName: "avax:avax-nusdc:noble",
       caseType: "evm",
-      fromAmount: ethers.utils.parseUnits(".05", "18").toString(),
+      fromAmount: ethers.utils.parseUnits(".1", "18").toString(),
       fromChainId: 43113,
       fromToken: "avax",
       toChainId: "grand-1",
@@ -57,10 +57,10 @@ export const cases: Cases = {
 
     // cosmos-evm
     {
-      caseId: 4,
+      caseId: 201,
       caseName: "nusdc:osmosis-avax:avax",
       caseType: "cosmos",
-      fromAmount: "111111",
+      fromAmount: "151111",
       fromChainId: "osmo-test-5",
       fromToken: "usdc",
       toChainId: 43113,
@@ -68,10 +68,10 @@ export const cases: Cases = {
       toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
     },
     {
-      caseId: 5,
+      caseId: 202,
       caseName: "ausdc:osmosis-avax:avax",
       caseType: "cosmos",
-      fromAmount: "111111",
+      fromAmount: "1511111",
       fromChainId: "osmo-test-5",
       fromToken: "ausdc",
       toChainId: 43113,
@@ -79,20 +79,19 @@ export const cases: Cases = {
       toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
     },
     {
-      caseId: 6,
+      caseId: 203,
       caseName: "nusdc:noble-avax:avax",
       caseType: "cosmos",
-      fromAmount: "111111",
+      fromAmount: "1511111",
       fromChainId: "grand-1",
       fromToken: "usdc",
       toChainId: 43113,
       toToken: "avax",
       toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
     },
-
     // cosmos-cosmos
     {
-      caseId: 7,
+      caseId: 301,
       caseName: "nusdc:noble-nusdc:osmosis",
       caseType: "cosmos",
       fromAmount: "111111",
@@ -103,10 +102,10 @@ export const cases: Cases = {
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
     },
     {
-      caseId: 8,
+      caseId: 302,
       caseName: "nusdc:osmosis-nusdc:noble",
       caseType: "cosmos",
-      fromAmount: "111111",
+      fromAmount: "1511111",
       fromChainId: "osmo-test-5",
       fromToken: "usdc",
       toChainId: "grand-1",
@@ -114,7 +113,7 @@ export const cases: Cases = {
       toAddress: "noble1al29pjgw8hy7rmtvxlckrse7vkdrlz5z78m8rc",
     },
     {
-      caseId: 9,
+      caseId: 303,
       caseName: "nusdc:osmosis-uosmo:osmosis",
       caseType: "cosmos",
       fromAmount: "111111",
@@ -124,7 +123,17 @@ export const cases: Cases = {
       toToken: "osmo",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
     },
-
+    {
+      caseId: 304,
+      caseName: "nusdc:osmosis-ausdc:axelar",
+      caseType: "cosmos",
+      fromAmount: "111111",
+      fromChainId: "osmo-test-5",
+      fromToken: "usdc",
+      toChainId: "axelar-testnet-lisbon-3",
+      toToken: "ausdc",
+      toAddress: "axelar1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64d2ak9f",
+    },
     // add new cases here
   ],
   ["mainnet"]: [
