@@ -89,6 +89,17 @@ export const cases: Cases = {
       toToken: "avax",
       toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
     },
+    {
+      caseId: 204,
+      caseName: "nusdc:dydx-avax:avax",
+      caseType: "cosmos",
+      fromAmount: "1511111",
+      fromChainId: "dydxprotocol-testnet",
+      fromToken: "usdc",
+      toChainId: 43113,
+      toToken: "avax",
+      toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
+    },
     // cosmos-cosmos
     {
       caseId: 301,
