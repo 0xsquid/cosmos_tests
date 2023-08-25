@@ -1,4 +1,6 @@
 # default config is always loaded, env config (eg testnet) is loaded using the argument passed into the loadAsync function
+#https://squid-api-git-feat-cosmos-maintestnet-0xsquid.vercel.app
+#https://squid-api-git-feat-cosmos-mainmainnet-0xsquid.vercel.app
 default:
   api_url: "http://localhost:3000"
 testnet:
