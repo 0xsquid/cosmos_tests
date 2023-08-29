@@ -64,7 +64,7 @@ const toAddress = "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6";
         slippage: 3.0,
         enableForecall: false,
         quoteOnly: false,
-        cosmosSignerAddress: signerAddress,
+        fromAddress: signerAddress,
     };
 
     console.log("route params", params);

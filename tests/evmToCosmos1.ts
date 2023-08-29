@@ -44,7 +44,7 @@ const toAddress = "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl";
         slippage: 3.0,
         enableForecall: false,
         quoteOnly: false,
-        evmFallbackAddress: config.fallBackAddress,
+        fromAddress: config.fallBackAddress,
     };
 
     console.log("route params", params);
