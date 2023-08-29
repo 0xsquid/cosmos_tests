@@ -10,6 +10,7 @@ export type RunnerCase = {
   fromToken: string;
   toChainId: string | number;
   toToken: string;
+  fromAddress?: string;
   toAddress: string;
 };
 
@@ -30,6 +31,7 @@ export const cases: Cases = {
       fromToken: "avax",
       toChainId: "dydx-testnet-2",
       toToken: "usdc",
+      fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
     },
     {
@@ -41,6 +43,7 @@ export const cases: Cases = {
       fromToken: "avax",
       toChainId: "osmo-test-5",
       toToken: "usdc",
+      fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "osmo1eaztm3pqrkw2xgt0lxppahtx5v5pndmjg6yfrh",
     },
     {
@@ -52,6 +55,7 @@ export const cases: Cases = {
       fromToken: "avax",
       toChainId: "grand-1",
       toToken: "usdc",
+      fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "noble1al29pjgw8hy7rmtvxlckrse7vkdrlz5z78m8rc",
     },
 
@@ -211,6 +215,7 @@ export function intoBaseRequest(runnerCase: RunnerCase, squid: Squid): object {
         t.symbol.toLocaleLowerCase() === runnerCase.toToken &&
         t.chainId === runnerCase.toChainId
     )!.address,
+    //fromAddress: runnerCase.fromAddress,
     toAddress: runnerCase.toAddress,
     slippage: 3.0,
     enableForecall: false,

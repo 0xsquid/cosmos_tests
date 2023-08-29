@@ -14,7 +14,7 @@
     "show:mainnet": "ts-node tests/printCases.ts mainnet"
   },
   "dependencies": {
-    "@0xsquid/sdk": "1.10.0",
+    "@0xsquid/sdk": "1.12.0",
     "@cosmjs/stargate": "^0.31.0",
     "@types/node": "^18.11.10",
     "@types/typescript": "^2.0.0",

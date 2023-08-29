@@ -55,7 +55,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
       signer = new ethers.Wallet(config.pk, provider);
 
       params = {
-        evmFallbackAddress: config.fallBackAddress,
+        fromAddress: runnerCase.fromAddress,
         ...baseParams,
       };
 
@@ -89,7 +89,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
       );
 
       params = {
-        cosmosSignerAddress: signerAddress,
+        fromAddress: signerAddress,
         ...baseParams,
       };
 
