@@ -6,7 +6,7 @@ default:
 testnet:
   pk: yourpkhere
   mnemonic: ""
-  fallBackAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22"
+  fallBackAddress: "0x"
 mainnet:
   pk:
   mnemonic: ""

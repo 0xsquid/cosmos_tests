@@ -55,7 +55,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
       signer = new ethers.Wallet(config.pk, provider);
 
       params = {
-        fromAddress: config.fallBackAddress,
+        fromAddress: runnerCase.fromAddress,
         ...baseParams,
       };
 
