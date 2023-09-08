@@ -1,5 +1,6 @@
 import { CosmosChain, Squid } from "@0xsquid/sdk";
 import { SigningStargateClient, DeliverTxResponse } from "@cosmjs/stargate";
+import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
 import {
     DirectSecp256k1HdWallet,
     OfflineDirectSigner,
@@ -74,8 +75,8 @@ const toAddress = "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6";
         signer: signingClient,
         signerAddress,
         route,
-    })) as DeliverTxResponse;
-    const txHash = tx.transactionHash;
+    })) as TxRaw;
+    const txHash = (await signingClient.broadcastTx(TxRaw.encode(tx).finish())).transactionHash;
     //const txHash =
     //    "F3B0102ADC9A1B8423383ED1258D23215DCA3DD6D3A3C7B7887EA9A0FDB9DDAD";
 

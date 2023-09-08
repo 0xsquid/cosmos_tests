@@ -1,10 +1,11 @@
 import { appendFileSync } from "fs";
 import { CosmosChain, GetRoute, Squid } from "@0xsquid/sdk";
-import { SigningStargateClient, DeliverTxResponse } from "@cosmjs/stargate";
+import { SigningStargateClient } from "@cosmjs/stargate";
 import {
   DirectSecp256k1HdWallet,
   OfflineDirectSigner,
 } from "@cosmjs/proto-signing";
+import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
 import { ethers } from "ethers";
 import { sleep } from "../utils";
 import { loadAsync } from "node-yaml-config";
@@ -128,8 +129,12 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
     }
 
     case "cosmos": {
-      const cosmosTx = tx as DeliverTxResponse;
-      txHash = cosmosTx.transactionHash;
+      const cosmosTx = tx as TxRaw;
+      const txReceipt = await (signer as SigningStargateClient).broadcastTx(
+        TxRaw.encode(cosmosTx).finish()
+      );
+
+      txHash = txReceipt.transactionHash;
 
       break;
     }
