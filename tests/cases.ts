@@ -58,6 +58,18 @@ export const cases: Cases = {
       fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "noble1al29pjgw8hy7rmtvxlckrse7vkdrlz5z78m8rc",
     },
+    {
+      caseId: 104,
+      caseName: "usdc:avax-osmo:osmosis",
+      caseType: "evm",
+      fromAmount: ethers.utils.parseUnits(".05", "6").toString(),
+      fromChainId: 43113,
+      fromToken: "ausdc",
+      toChainId: "osmo-test-5",
+      toToken: "osmo",
+      fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+    },
 
     // cosmos-evm
     {
@@ -97,7 +109,7 @@ export const cases: Cases = {
       caseId: 204,
       caseName: "nusdc:dydx-avax:avax",
       caseType: "cosmos",
-      fromAmount: "1511111",
+      fromAmount: "1311111",
       fromChainId: "dydx-testnet-2",
       fromToken: "usdc",
       toChainId: 43113,
@@ -205,14 +217,16 @@ export function intoBaseRequest(runnerCase: RunnerCase, squid: Squid): object {
     fromChain: runnerCase.fromChainId,
     fromToken: squid.tokens.find(
       (t) =>
-        t.symbol.toLocaleLowerCase() === runnerCase.fromToken &&
+        t.symbol.toLocaleLowerCase() ===
+          runnerCase.fromToken.toLocaleLowerCase() &&
         t.chainId === runnerCase.fromChainId
     )!.address,
     fromAmount: runnerCase.fromAmount,
     toChain: runnerCase.toChainId,
     toToken: squid.tokens.find(
       (t) =>
-        t.symbol.toLocaleLowerCase() === runnerCase.toToken &&
+        t.symbol.toLocaleLowerCase() ===
+          runnerCase.toToken.toLocaleLowerCase() &&
         t.chainId === runnerCase.toChainId
     )!.address,
     //fromAddress: runnerCase.fromAddress,

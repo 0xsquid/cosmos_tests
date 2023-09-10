@@ -1,12 +1,12 @@
 import { appendFileSync } from "fs";
-import { CosmosChain, GetRoute, Squid } from "@0xsquid/sdk";
+import { ChainType, CosmosChain, GetRoute, Squid } from "@0xsquid/sdk";
 import { SigningStargateClient, DeliverTxResponse } from "@cosmjs/stargate";
 import {
   DirectSecp256k1HdWallet,
   OfflineDirectSigner,
 } from "@cosmjs/proto-signing";
 import { ethers } from "ethers";
-import { sleep } from "../utils";
+import { getBalance, sleep } from "../utils";
 import { loadAsync } from "node-yaml-config";
 import { RunnerCase, cases, intoBaseRequest } from "./cases";
 
@@ -100,6 +100,19 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
   log("Getting route...");
   const { route } = await squid.getRoute(params as GetRoute);
 
+  //get balance before
+  const toChain = squid.chains.find(
+    (c) => c.chainId.toString().toLocaleLowerCase() === route.params.toChain
+  );
+  const pk_mnemonic =
+    toChain.chainType == ChainType.Cosmos ? config.mnemonic : config.pk;
+  const beforeBalanceOnDestination = await getBalance(
+    params as GetRoute,
+    toChain,
+    pk_mnemonic
+  );
+  console.log("Destination balanche before:", beforeBalanceOnDestination);
+
   //override gas for fantom
   let overrides;
   if ((params as GetRoute).fromChain === 250) {
@@ -140,7 +153,6 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
   log(`TX Hash: ${txHash}`);
 
   log("Waiting for tx to be indexed...");
-  //await sleep(5);
 
   let statusResult = false;
   while (!statusResult) {
@@ -170,6 +182,15 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
 
           statusResult = true;
           log("########### tx success ############");
+          const afterBalanceOnDestination = await getBalance(
+            params as GetRoute,
+            toChain,
+            pk_mnemonic
+          );
+          console.log("Destination balanche after:", afterBalanceOnDestination);
+          BigInt(beforeBalanceOnDestination) < BigInt(afterBalanceOnDestination)
+            ? console.log("Balance update Success.")
+            : console.log("!!!!!!!!!!! - Balance update failure !!!!!!!!");
           break;
         }
       }
