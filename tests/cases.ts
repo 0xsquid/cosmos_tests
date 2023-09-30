@@ -12,6 +12,7 @@ export type RunnerCase = {
   toToken: string;
   fromAddress?: string;
   toAddress: string;
+  receiveGasOnDestination?: boolean;
 };
 
 export type Cases = {
@@ -69,6 +70,19 @@ export const cases: Cases = {
       toToken: "osmo",
       fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+    },
+    {
+      caseId: 105,
+      caseName: "avax:avax - usdc:osmosis",
+      caseType: "evm",
+      fromAmount: ethers.utils.parseUnits(".15", "6").toString(),
+      fromChainId: 43113,
+      fromToken: "ausdc",
+      toChainId: "osmo-test-5",
+      toToken: "usdc",
+      fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      receiveGasOnDestination: true,
     },
 
     // cosmos-evm
@@ -194,6 +208,17 @@ export const cases: Cases = {
       toToken: "usdc",
       toAddress: "noble1al29pjgw8hy7rmtvxlckrse7vkdrlz5z78m8rc",
     },
+    {
+      caseId: 308,
+      caseName: "nusdc:noble-ausdc:osmosis",
+      caseType: "cosmos",
+      fromAmount: "111111",
+      fromChainId: "grand-1",
+      fromToken: "usdc",
+      toChainId: "osmo-test-5",
+      toToken: "ausdc",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+    },
     // add new cases here
   ],
   ["mainnet"]: [
@@ -207,6 +232,18 @@ export const cases: Cases = {
       fromToken: "ftm",
       toChainId: "osmosis-1",
       toToken: "osmo",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+    },
+    {
+      caseId: 102,
+      caseName: "avax:avax - atom:osmosis",
+      caseType: "evm",
+      fromAmount: ethers.utils.parseUnits(".05", "18").toString(),
+      fromChainId: 43114,
+      fromToken: "avax",
+      toChainId: "osmosis-1",
+      toToken: "xprt",
+      fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
     },
   ],
@@ -229,10 +266,11 @@ export function intoBaseRequest(runnerCase: RunnerCase, squid: Squid): object {
           runnerCase.toToken.toLocaleLowerCase() &&
         t.chainId === runnerCase.toChainId
     )!.address,
-    //fromAddress: runnerCase.fromAddress,
+    fromAddress: runnerCase.fromAddress,
     toAddress: runnerCase.toAddress,
     slippage: 3.0,
     enableForecall: false,
     quoteOnly: false,
+    receiveGasOnDestination: runnerCase.receiveGasOnDestination,
   };
 }
