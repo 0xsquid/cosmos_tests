@@ -30,7 +30,7 @@ export const cases: Cases = {
       fromAmount: ethers.utils.parseUnits(".05", "18").toString(),
       fromChainId: 43113,
       fromToken: "avax",
-      toChainId: "dydx-testnet-2",
+      toChainId: "dydx-testnet-3",
       toToken: "usdc",
       fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
@@ -236,7 +236,7 @@ export const cases: Cases = {
     },
     {
       caseId: 102,
-      caseName: "avax:avax - atom:osmosis",
+      caseName: "avax:avax - xprt:osmosis",
       caseType: "evm",
       fromAmount: ethers.utils.parseUnits(".05", "18").toString(),
       fromChainId: 43114,
@@ -245,6 +245,7 @@ export const cases: Cases = {
       toToken: "xprt",
       fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      receiveGasOnDestination: true,
     },
   ],
 };
