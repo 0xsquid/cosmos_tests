@@ -12,6 +12,7 @@ export type RunnerCase = {
   toToken: string;
   fromAddress?: string;
   toAddress: string;
+  receiveGasOnDestination?: boolean;
 };
 
 export type Cases = {
@@ -197,10 +198,33 @@ export const cases: Cases = {
       toToken: "osmo",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
     },
+    {
+      caseId: 102,
+      caseName: "avax:avax - persistence:osmosis",
+      caseType: "evm",
+      fromAmount: ethers.utils.parseUnits(".05", "18").toString(),
+      fromChainId: 43114,
+      fromToken: "avax",
+      toChainId: "osmosis-1",
+      toToken: "xprt",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      receiveGasOnDestination: true,
+    },
+    {
+      caseId: 103,
+      caseName: "axlusdc:avax - axlusdc:sei(bridge only)",
+      caseType: "evm",
+      fromAmount: "2000000",
+      fromChainId: 43114,
+      fromToken: "0xfaB550568C688d5D8A52C7d794cb93Edc26eC0eC",
+      toChainId: "pacific-1",
+      toToken: "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349",
+      toAddress: "sei1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64yg6ggf",
+    },
   ],
 };
 
-export function intoBaseRequest(runnerCase: RunnerCase, squid: Squid): object {
+export function intoBaseRequest(runnerCase: RunnerCase, squid: Squid, fromAddress: string): object {
   return {
     fromChain: runnerCase.fromChainId,
     fromToken: squid.tokens.find(
@@ -215,10 +239,11 @@ export function intoBaseRequest(runnerCase: RunnerCase, squid: Squid): object {
         t.symbol.toLocaleLowerCase() === runnerCase.toToken &&
         t.chainId === runnerCase.toChainId
     )!.address,
-    //fromAddress: runnerCase.fromAddress,
+    fromAddress,
     toAddress: runnerCase.toAddress,
     slippage: 3.0,
     enableForecall: false,
     quoteOnly: false,
+    receiveGasOnDestination: runnerCase.receiveGasOnDestination ?? false,
   };
 }

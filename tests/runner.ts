@@ -47,7 +47,6 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
   let signerAddress: string | null = null;
   let params: object;
 
-  const baseParams = intoBaseRequest(runnerCase, squid);
   switch (runnerCase.caseType) {
     case "evm": {
       const provider = ethers.getDefaultProvider(
@@ -55,11 +54,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
       );
       signer = new ethers.Wallet(config.pk, provider);
 
-      params = {
-        fromAddress: runnerCase.fromAddress,
-        ...baseParams,
-      };
-
+      params = intoBaseRequest(runnerCase, squid, await signer.getAddress());
       break;
     }
 
@@ -89,11 +84,7 @@ export async function runCase(config: any, runnerCase: RunnerCase) {
         )}`
       );
 
-      params = {
-        fromAddress: signerAddress,
-        ...baseParams,
-      };
-
+      params = intoBaseRequest(runnerCase, squid, signerAddress);
       break;
     }
   }
