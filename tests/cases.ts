@@ -272,6 +272,6 @@ export function intoBaseRequest(runnerCase: RunnerCase, squid: Squid): object {
     slippage: 3.0,
     enableForecall: false,
     quoteOnly: false,
-    receiveGasOnDestination: runnerCase.receiveGasOnDestination,
+    receiveGasOnDestination: runnerCase.receiveGasOnDestination ?? false,
   };
 }
