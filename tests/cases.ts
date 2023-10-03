@@ -247,6 +247,33 @@ export const cases: Cases = {
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
       receiveGasOnDestination: true,
     },
+    {
+      caseId: 103,
+      caseName: "axlusdc:avax - axlusdc:sei(bridge only)",
+      caseType: "evm",
+      fromAmount: "2000000",
+      fromChainId: 43114,
+      fromToken: "0xfaB550568C688d5D8A52C7d794cb93Edc26eC0eC",
+      toChainId: "pacific-1",
+      toToken:
+        "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349",
+      toAddress: "sei1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64yg6ggf",
+    },
+
+    // cosmos-cosmos
+    {
+      caseId: 300,
+      caseName: "uaxl:axelar -> atom:osmosis",
+      caseType: "cosmos",
+      fromAmount: "10000000",
+      fromChainId: "axelar-dojo-1",
+      fromToken: "uaxl",
+      toChainId: "osmosis-1",
+      toToken:
+        "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      receiveGasOnDestination: true,
+    },
   ],
 };
 
