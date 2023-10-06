@@ -124,11 +124,12 @@ export const cases: Cases = {
       caseName: "nusdc:dydx-avax:avax",
       caseType: "cosmos",
       fromAmount: "1311111",
-      fromChainId: "dydx-testnet-2",
+      fromChainId: "dydx-testnet-3",
       fromToken: "usdc",
       toChainId: 43113,
       toToken: "avax",
       toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
+      fromAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
     },
     // cosmos-cosmos
     {
@@ -163,6 +164,7 @@ export const cases: Cases = {
       toChainId: "osmo-test-5",
       toToken: "osmo",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      fromAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
     },
     {
       caseId: 304,
