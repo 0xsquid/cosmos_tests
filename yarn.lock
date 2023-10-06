@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@0xsquid/sdk@1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@0xsquid/sdk/-/sdk-1.12.0.tgz#044f9bd79b1dece0fd37c1c379d6ce836c2c6a8b"
-  integrity sha512-dJ0nV2ha4dJrsMRw3splY1YMp/TLIog8T9D2Ewc5fHtAbNKhawAgZxQg27xdPKVKKAdZyoFyutwSpSqLNMh6EQ==
+"@0xsquid/sdk@1.12.1":
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/@0xsquid/sdk/-/sdk-1.12.1.tgz#ccdb26bbfea698f6f44830e3b9a1b1bf6c51b34b"
+  integrity sha512-sZ8pvagfXwbF8i3JowWRPlpE91HbSZ24FtmXgwn41VwEMZESP0OQQjMo/yLV+1ChtB8TAKvjPTHoWgrxTWyAiA==
   dependencies:
     "@cosmjs/encoding" "^0.31.0"
     "@cosmjs/stargate" "^0.31.0"
@@ -658,11 +658,6 @@ bech32@1.1.4, bech32@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/bech32/-/bech32-1.1.4.tgz#e38c9f37bf179b8eb16ae3a772b40c356d4832e9"
   integrity sha512-s0IrSOzLlbvX7yp4WBfPITzpAU8sqQcpsmwXDiKwrG4r491vwCO/XpejasRNl0piBMe/DvP4Tz0mIS/X1DPJBQ==
-
-bech32@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/bech32/-/bech32-2.0.0.tgz#078d3686535075c8c79709f054b1b226a133b355"
-  integrity sha512-LcknSilhIGatDAsY1ak2I8VtGaHNhgMSYVxFrGLXv+xLHytaKZKcaUJJUE7qmBr7h33o5YQwP55pMI0xmkpJwg==
 
 bn.js@^4.11.9:
   version "4.12.0"
