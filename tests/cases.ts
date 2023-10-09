@@ -142,6 +142,7 @@ export const cases: Cases = {
       toChainId: "osmo-test-5",
       toToken: "usdc",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      fromAddress: "noble1al29pjgw8hy7rmtvxlckrse7vkdrlz5z78m8rc",
     },
     {
       caseId: 302,
@@ -233,6 +234,18 @@ export const cases: Cases = {
       toToken: "osmo",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
       fromAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
+    },
+    {
+      caseId: 310,
+      caseName: "osmo:osmosis - nusdc:dydx",
+      caseType: "cosmos",
+      fromAmount: "10536",
+      fromChainId: "osmo-test-5",
+      fromToken: "osmo",
+      toChainId: "dydx-testnet-3",
+      toToken: "usdc",
+      toAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
+      fromAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
     },
     // add new cases here
   ],
