@@ -30,9 +30,12 @@ export const getBalance = async (
     );
     const signerAddress = (await offlineSigner.getAccounts())[0].address;
     const allBalances = await signer.getAllBalances(signerAddress);
-    const amount = allBalances.find(
-      (item) => item.denom === params.toToken
-    ).amount;
+    let amount;
+    if (allBalances.length > 0) {
+      amount = allBalances.find((item) => item.denom === params.toToken).amount;
+    } else {
+      amount = 0;
+    }
     return amount;
   } else if (chain.chainType === ChainType.EVM) {
     const provider = ethers.getDefaultProvider(chain.rpc);
