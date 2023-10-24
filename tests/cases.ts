@@ -96,6 +96,18 @@ export const cases: Cases = {
       fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       toAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
     },
+    {
+      caseId: 107,
+      caseName: "ausdc:avax - ausdc:osmosis",
+      caseType: "evm",
+      fromAmount: ethers.utils.parseUnits(".15", "6").toString(),
+      fromChainId: 43113,
+      fromToken: "ausdc",
+      toChainId: "osmo-test-5",
+      toToken: "ausdc",
+      fromAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+    },
 
     // cosmos-evm
     {
@@ -142,6 +154,18 @@ export const cases: Cases = {
       toToken: "avax",
       toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
       fromAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
+    },
+    {
+      caseId: 205,
+      caseName: "ausdc:osmosis-ausdc:avax",
+      caseType: "cosmos",
+      fromAmount: "1811111",
+      fromChainId: "osmo-test-5",
+      fromToken: "ausdc",
+      toChainId: 43113,
+      toToken: "ausdc",
+      toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
+      fromAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
     },
     // cosmos-cosmos
     {
