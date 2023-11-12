@@ -131,6 +131,7 @@ export const cases: Cases = {
       toChainId: 43113,
       toToken: "avax",
       toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
+      fromAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
     },
     {
       caseId: 203,
@@ -148,7 +149,7 @@ export const cases: Cases = {
       caseName: "nusdc:dydx-avax:avax",
       caseType: "cosmos",
       fromAmount: "1311111",
-      fromChainId: "dydx-testnet-3",
+      fromChainId: "dydx-testnet-4",
       fromToken: "usdc",
       toChainId: 43113,
       toToken: "avax",
@@ -323,7 +324,18 @@ export const cases: Cases = {
         "ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349",
       toAddress: "sei1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64yg6ggf",
     },
-
+    {
+      caseId: 201,
+      caseName: "nusdc:dydx-avax:avax",
+      caseType: "cosmos",
+      fromAmount: "1311111",
+      fromChainId: "dydx-mainnet-1",
+      fromToken: "usdc",
+      toChainId: 43114,
+      toToken: "avax",
+      toAddress: "0xb13CD07B22BC5A69F8500a1Cb3A1b65618d50B22",
+      fromAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
+    },
     // cosmos-cosmos
     {
       caseId: 300,
@@ -337,6 +349,18 @@ export const cases: Cases = {
         "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
       receiveGasOnDestination: true,
+    },
+    {
+      caseId: 301,
+      caseName: "usdc:dydx -> osmo:osmosis",
+      caseType: "cosmos",
+      fromAmount: "11111",
+      fromChainId: "dydx-mainnet-1",
+      fromToken: "usdc",
+      toChainId: "osmosis-1",
+      toToken: "osmo",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      fromAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
     },
   ],
 };
