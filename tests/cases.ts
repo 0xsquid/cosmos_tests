@@ -348,7 +348,6 @@ export const cases: Cases = {
       toToken:
         "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
-      receiveGasOnDestination: true,
     },
     {
       caseId: 301,
@@ -361,6 +360,19 @@ export const cases: Cases = {
       toToken: "osmo",
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
       fromAddress: "dydx1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64qa96wl",
+    },
+    {
+      //not working due to bip-44 address
+      caseId: 302,
+      caseName: "evmos:evmos -> osmso:osmosis",
+      caseType: "cosmos",
+      fromAmount: "1000000000000000000",
+      fromChainId: "evmos_9001-2",
+      fromToken: "evmos",
+      toChainId: "osmosis-1",
+      toToken: "osmo",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      fromAddress: "evmos1zl83zlagjxa44a2593sq9eamzerqzjekrmzx6x",
     },
   ],
 };
