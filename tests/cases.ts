@@ -374,6 +374,19 @@ export const cases: Cases = {
       toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
       fromAddress: "evmos1zl83zlagjxa44a2593sq9eamzerqzjekrmzx6x",
     },
+    {
+      //not working due to bip-44 address
+      caseId: 303,
+      caseName: "evmos:evmos -> osmso:osmosis",
+      caseType: "cosmos",
+      fromAmount: "13454",
+      fromChainId: "kaiyo-1",
+      fromToken: "kuji",
+      toChainId: "osmosis-1",
+      toToken: "osmo",
+      toAddress: "osmo1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64plcwc6",
+      fromAddress: "kujira1zqnudqmjrgh9m3ec9yztkrn4ttx7ys64cvfxrz",
+    },
   ],
 };
 
